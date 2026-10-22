@@ -168,6 +168,7 @@ src/
 │   └── …                   time, weather codes, plan store, client cache, URL sanitizing
 └── styles/tokens.css       Colors, fonts, sizes
 public/photos/              Category photos (Wikimedia Commons, see THIRD_PARTY_NOTICES.md)
+scripts/                    Build helpers (copies MapLibre's web worker before dev/build)
 ```
 
 ## Deployment

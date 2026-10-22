@@ -1,6 +1,6 @@
 name: CI
 
-# Verifies that the app builds on every push to main and on every pull request.
+# Verifies that the app and the static demo build on every push to main and on every pull request.
 # No secrets are needed: without API keys the app builds in OpenStreetMap mode.
 on:
   push:
@@ -26,3 +26,4 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - run: npm run build:demo

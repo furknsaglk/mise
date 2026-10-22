@@ -4,6 +4,21 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-10-22
+
+### Added
+
+- Keyless live demo on GitHub Pages (`npm run build:demo`, `.github/workflows/pages.yml`): a static export that
+  generates clearly labeled fictional venues in the browser and calls the free services (Photon, Open-Meteo, OSRM,
+  OpenFreeMap) directly. Venue positions are kept on land using Open-Meteo elevation data.
+- In-app demo notice and "fictional demo venue" labels on cards and map popups.
+
+### Changed
+
+- Photon, Open-Meteo and OSRM clients moved to `src/lib/services/`, shared by the API routes and the demo.
+- The browser gets all data through `src/lib/dataClient.js`; asset URLs respect an optional base path.
+- CI also builds the static demo.
+
 ## [0.1.1] - 2026-10-22
 
 ### Security
@@ -34,5 +49,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Cost safeguards: per-IP rate limiting, in-session request sharing, documented Google Cloud quota setup.
 - PWA manifest, responsive layout and dark mode.
 
+[0.2.0]: https://github.com/furknsaglk/mise/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/furknsaglk/mise/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/furknsaglk/mise/releases/tag/v0.1.0

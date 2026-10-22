@@ -4,10 +4,10 @@
    ========================================================== */
 
 :root {
-  /* Zemin & metin */
-  --paper: #f4efe6;        /* Krem kağıt */
+  /* Background & text */
+  --paper: #f4efe6;        /* Cream paper */
   --paper-2: #ebe4d7;
-  --surface: #fbf8f2;      /* Kart yüzeyi */
+  --surface: #fbf8f2;      /* Card surface */
   --ink: #1e1a17;          /* Espresso */
   --ink-2: #5a524b;
   --ink-3: #8c837a;
@@ -23,7 +23,7 @@
   --saffron: #e8a33d;
   --saffron-soft: rgba(232, 163, 61, 0.18);
   --plum: #7a3b57;
-  --rain: #5a7f99; /* yağmur / hava uyarıları */
+  --rain: #5a7f99; /* rain / weather alerts */
 
   /* Course (meal) colors */
   --c-breakfast: var(--saffron);

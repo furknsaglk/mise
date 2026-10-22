@@ -13,6 +13,7 @@ import usePlan from "@/hooks/usePlan";
 import useWeather from "@/hooks/useWeather";
 import WeatherStrip from "@/components/insights/WeatherStrip";
 import QuotaNotice from "@/components/insights/QuotaNotice";
+import DemoNotice from "@/components/insights/DemoNotice";
 import { planActions } from "@/lib/planStore";
 import { reverseLabel } from "@/lib/geo";
 import { venueOpenAt, weekdayIn, minutesNowIn } from "@/lib/time";
@@ -33,7 +34,7 @@ const DEFAULT_FILTERS = {
   sort: "score",
 };
 
-const SOURCE_LABELS = { osm: "OpenStreetMap", google: "Google", foursquare: "Foursquare" };
+const SOURCE_LABELS = { osm: "OpenStreetMap", google: "Google", foursquare: "Foursquare", demo: "Kurgusal demo verisi" };
 
 // The brain of the DISCOVER screen: location, filters, map and list come together here.
 export default function Explorer() {
@@ -102,6 +103,8 @@ export default function Explorer() {
         {geoStatus === "denied" && <p className={styles.note}>Konum izni verilmedi; arama yapabilir ya da haritaya dokunabilirsin.</p>}
 
         <WeatherStrip weather={weather} mode="now" placeName={place.label.split(",")[0]} />
+
+        <DemoNotice />
 
         <FilterBar filters={filters} onChange={setFilters} />
 

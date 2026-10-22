@@ -3,6 +3,7 @@
 import { forwardRef, useState } from "react";
 import Link from "next/link";
 import ReviewList from "./ReviewList";
+import { withBase } from "@/lib/basePath";
 import GooglePlaceCard from "./GooglePlaceCard";
 import { googlePlaceIdFor } from "@/lib/googlePlaceLinks";
 import { planActions, todayIso } from "@/lib/planStore";
@@ -38,7 +39,7 @@ const VenueCard = forwardRef(function VenueCard({ venue, selected, onSelect, onH
       <button className={styles.main} onClick={() => onSelect(selected ? null : venue.id)} aria-expanded={selected}>
         <div className={styles.photo}>
           {venue.photo ? (
-            <img src={venue.photo} alt="" loading="lazy" />
+            <img src={withBase(venue.photo)} alt="" loading="lazy" />
           ) : (
             // Venues without a photo: typographic cover with the course numeral + initial
             <div className={styles.cover} aria-hidden>
@@ -138,6 +139,9 @@ const VenueCard = forwardRef(function VenueCard({ venue, selected, onSelect, onH
               {venue.photoCredit && ` · Fotoğraf: ${venue.photoCredit}`}
             </p>
           )}
+          {venue.origin === "demo" && (
+            <p className={styles.attribution}>Kurgusal demo mekanı · puanlar ve yorumlar örnek amaçlıdır</p>
+          )}
 
           <BusynessBars
             curve={busynessCurve(venue, todayIso())}
@@ -161,9 +165,11 @@ const VenueCard = forwardRef(function VenueCard({ venue, selected, onSelect, onH
                 <Icon name="ticket" size={15} /> Menüye ekle
               </button>
             )}
-            <a className={styles.link} href={venue.mapsUrl ?? googleMapsPlace(venue)} target="_blank" rel="noreferrer">
-              <Icon name="pin" size={15} /> Google Haritalar'da aç
-            </a>
+            {venue.origin !== "demo" && (
+              <a className={styles.link} href={venue.mapsUrl ?? googleMapsPlace(venue)} target="_blank" rel="noreferrer">
+                <Icon name="pin" size={15} /> Google Haritalar'da aç
+              </a>
+            )}
             {venue.website && (
               <a className={styles.link} href={venue.website} target="_blank" rel="noreferrer">
                 <Icon name="arrow" size={15} /> Web sitesi

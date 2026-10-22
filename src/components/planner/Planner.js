@@ -13,6 +13,7 @@ import useWalkingRoute from "@/hooks/useWalkingRoute";
 import useWeather from "@/hooks/useWeather";
 import WeatherStrip from "@/components/insights/WeatherStrip";
 import QuotaNotice from "@/components/insights/QuotaNotice";
+import DemoNotice from "@/components/insights/DemoNotice";
 import { planActions } from "@/lib/planStore";
 import { planDay, schedule } from "@/lib/routing/optimizer";
 import { reverseLabel } from "@/lib/geo";
@@ -108,6 +109,7 @@ export default function Planner() {
 
         <div className={styles.ticket}>
           <div className={styles.weather}>
+            <DemoNotice />
             <WeatherStrip weather={weather} mode="day" />
             {!loading && <QuotaNotice status={googleStatus} />}
             {!loading && fetchedAt && (

@@ -5,7 +5,10 @@
 // The key is a public browser key: on Google's side it is locked to Places UI Kit + Maps JS,
 // to Mise's own domain only, and card loads are capped below the free tier with a daily quota.
 
-const KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY;
+import { IS_DEMO } from "@/lib/demo/config";
+
+// The keyless demo never loads Google, even if a key happens to be present at build time.
+const KEY = IS_DEMO ? null : process.env.NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY;
 let loading = null;
 
 export const hasGoogleBrowserKey = () => Boolean(KEY);
@@ -30,7 +33,7 @@ export function loadPlacesUiKit() {
   })
     .then(() => window.google.maps.importLibrary("places"))
     .catch((err) => {
-      loading = null; // sonraki denemede tekrar dene
+      loading = null; // try again on the next attempt
       throw err;
     });
 

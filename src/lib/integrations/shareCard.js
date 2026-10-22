@@ -113,7 +113,7 @@ export async function renderShareCard({ stops, place, date, totals }) {
   const areaTop = perfY + 40;
   const bottom = H - M - 150;
   const rowH = Math.min(150, (bottom - areaTop) / Math.max(placed.length, 1));
-  // Az durak varsa listeyi dikeyde ortala
+  // With only a few stops, center the list vertically
   const top = areaTop + Math.max(0, (bottom - areaTop - rowH * placed.length) / 2);
   const nameSize = rowH < 120 ? 40 : 50;
 
@@ -146,7 +146,7 @@ export async function renderShareCard({ stops, place, date, totals }) {
     ctx.font = `400 ${nameSize}px ${F.serif}`;
     ctx.fillText(fitText(ctx, s.venue.name, R - L - 290), L + 110, y + 40 + nameSize + 4);
 
-    // Saat kutusu
+    // Time box
     ctx.font = `400 26px ${F.mono}`;
     ctx.strokeStyle = C.line;
     ctx.lineWidth = 2;

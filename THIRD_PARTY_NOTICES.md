@@ -72,6 +72,7 @@ This data is **not stored** in the repository. It is fetched live while the app 
 | OpenFreeMap / OpenMapTiles | Map tiles | [OpenFreeMap](https://openfreemap.org/), © OpenMapTiles, © OpenStreetMap |
 | OSRM (routing.openstreetmap.de) | Walking routes | FOSSGIS fair-use policy |
 | Open-Meteo | Weather | [CC BY 4.0](https://open-meteo.com/en/license); subscription required for commercial use |
+| Open-Meteo Elevation API (Copernicus DEM GLO-90) | Keeps demo venues on land | © DLR e.V. 2010–2014 and © Airbus Defence and Space GmbH 2014–2018, provided under COPERNICUS by the European Union and ESA; all rights reserved |
 | Google Places API / Places UI Kit | Ratings, reviews, hours | [Google Maps Platform Terms](https://cloud.google.com/maps-platform/terms) — content is not stored, only place IDs |
 | Foursquare Places API | Popular venues | [Foursquare API terms](https://foursquare.com/legal/terms/apilicenseagreement) |
 

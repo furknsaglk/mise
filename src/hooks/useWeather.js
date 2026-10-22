@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { cachedJson } from "@/lib/clientCache";
+import { cached } from "@/lib/clientCache";
+import { loadWeather } from "@/lib/dataClient";
 
 // Hourly weather + sunrise/sunset for the selected place and date.
 // A fresh forecast is fetched for every new search (refreshKey); within the same search,
@@ -12,11 +13,9 @@ export default function useWeather(center, date, refreshKey) {
   useEffect(() => {
     if (!center) return;
     let cancelled = false;
-    const params = new URLSearchParams({ lat: center.lat, lng: center.lng });
-    if (date) params.set("date", date);
     const key = `weather|${center.lat.toFixed(4)},${center.lng.toFixed(4)}|${date ?? "now"}|${refreshKey ?? 0}`;
 
-    cachedJson(key, `/api/weather?${params}`)
+    cached(key, () => loadWeather({ lat: center.lat, lng: center.lng, date }))
       .then((data) => !cancelled && setWeather(data))
       .catch(() => {});
     return () => {

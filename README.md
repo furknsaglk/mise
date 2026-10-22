@@ -3,6 +3,7 @@
 **Your day, *en place*.** A gastronomy route planner for Europe that finds the venues people love and turns
 your day into a tasting menu.
 
+[![Live demo](https://img.shields.io/badge/live%20demo-GitHub%20Pages-d9472b.svg)](https://furknsaglk.github.io/mise/)
 [![CI](https://github.com/furknsaglk/mise/actions/workflows/ci.yml/badge.svg)](https://github.com/furknsaglk/mise/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-d9472b.svg)](LICENSE)
 ![Next.js 16](https://img.shields.io/badge/Next.js-16-1e1a17.svg)
@@ -17,6 +18,11 @@ plans the day course by course — breakfast → coffee → local bites → dinn
 the "best" venue for each course in isolation, it optimizes **the whole day at once**: venue quality, opening
 hours on that weekday, total walking distance, hourly weather, sunset and estimated busyness.
 
+**▶ Live demo: [furknsaglk.github.io/mise](https://furknsaglk.github.io/mise/)** — no sign-up, no API keys.
+The demo runs entirely in your browser with **fictional venues** (invented names, ratings and reviews, generated
+around whatever place you search); place search, the map, weather, sunset and walking routes are real.
+See [Live demo](#live-demo).
+
 > **Note:** the user interface is in **Turkish**; code, comments and documentation are in English.
 > This is a personal project / prototype — see [Limitations](#limitations).
 
@@ -25,6 +31,7 @@ hours on that weekday, total walking distance, hourly weather, sunset and estima
 - [Features](#features)
 - [How the day planner works](#how-the-day-planner-works)
 - [Tech stack](#tech-stack)
+- [Live demo](#live-demo)
 - [Getting started](#getting-started)
 - [Configuration](#configuration)
 - [Cost safety](#cost-safety)
@@ -85,6 +92,23 @@ After the optimal path is found, the real walking route replaces the straight-li
 | Data | Google Places API (New), Foursquare Places API, OpenStreetMap (Overpass / Photon), OSRM, Open-Meteo |
 | State | `useSyncExternalStore` + `localStorage` (no database) |
 | Hosting | [Vercel](https://vercel.com/) (region `fra1`, see [`vercel.json`](vercel.json)) |
+
+## Live demo
+
+[furknsaglk.github.io/mise](https://furknsaglk.github.io/mise/) is a static build of the app, published to GitHub
+Pages by [`.github/workflows/pages.yml`](.github/workflows/pages.yml) on every push to `main`.
+
+- **What is fictional:** venues, their names, ratings (from two made-up sources, "Demo A" and "Demo B"), reviews and
+  opening hours. They are generated deterministically in the browser around the searched place
+  ([`src/lib/demo/venues.js`](src/lib/demo/venues.js)) and never refer to real businesses. A notice in the app says so.
+- **What is real:** place search and reverse geocoding (Photon), the map (OpenFreeMap), weather and sunset
+  (Open-Meteo), walking routes (OSRM) and the day optimizer itself. Venue positions are checked against Open-Meteo's
+  elevation data so they stay on land.
+- **No server and no keys:** the demo calls these free, CORS-enabled services directly. Google and Foursquare are
+  never contacted.
+
+Build it locally with `npm run build:demo` (output in `out/`, served under `/mise`; set `DEMO_BASE_PATH=` to serve it
+from the domain root).
 
 ## Getting started
 
@@ -161,6 +185,8 @@ src/
 ├── hooks/                  useVenues, useWeather, usePlan, useWalkingRoute, …
 ├── lib/
 │   ├── providers/          google.js, foursquare.js, osm.js, index.js (source merging)
+│   ├── services/           Photon, Open-Meteo, OSRM clients (shared by API routes and the demo)
+│   ├── demo/               Fictional venue generator for the keyless demo build
 │   ├── routing/            distance.js, optimizer.js
 │   ├── scoring/            miseScore.js
 │   ├── integrations/       deepLinks.js, calendar.js (.ics), shareCard.js, share.js
@@ -168,7 +194,7 @@ src/
 │   └── …                   time, weather codes, plan store, client cache, URL sanitizing
 └── styles/tokens.css       Colors, fonts, sizes
 public/photos/              Category photos (Wikimedia Commons, see THIRD_PARTY_NOTICES.md)
-scripts/                    Build helpers (copies MapLibre's web worker before dev/build)
+scripts/                    Build helpers (MapLibre web worker copy, static demo build)
 ```
 
 ## Deployment
@@ -183,6 +209,9 @@ npx vercel deploy --prod
 Define the environment variables under *Project → Settings → Environment Variables*. Vercel does not allow
 `NEXT_PUBLIC_*` variables to be marked as secret, because they are public by nature.
 
+The keyless demo is deployed separately to GitHub Pages (see [Live demo](#live-demo)); in a fork, enable it under
+*Settings → Pages → Source: GitHub Actions*.
+
 ## Limitations
 
 - Google ↔ Foursquare ID matches live only in the browser that collected them; while Google's quota is exhausted,
@@ -192,7 +221,7 @@ Define the environment variables under *Project → Settings → Environment Var
 - Plans are stored only in the browser (no accounts or cross-device sync).
 - The free public services used (OSRM demo server, Photon, Open-Meteo) have fair-use policies; Open-Meteo requires a
   subscription for commercial use.
-- No automated tests yet; CI verifies that the app builds.
+- No automated tests yet; CI verifies that the app and the static demo build.
 
 ## Contributing
 

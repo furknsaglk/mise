@@ -10,18 +10,15 @@
 //
 // Identical concurrent requests are collapsed into one (e.g. React's double-invoke in development).
 
-const store = new Map(); // anahtar → Promise<veri>
+const store = new Map(); // key → Promise<data>
 const MAX_ENTRIES = 40;
 
-export function cachedJson(key, url) {
+// Returns the stored promise for `key`, or calls `load()` once and stores its promise.
+export function cached(key, load) {
   const hit = store.get(key);
   if (hit) return hit;
 
-  const promise = fetch(url, { cache: "no-store" }).then(async (res) => {
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error ?? "İstek başarısız");
-    return data;
-  });
+  const promise = Promise.resolve().then(load);
   // Don't keep failures: retry on the next attempt
   promise.catch(() => store.delete(key));
 
@@ -29,6 +26,15 @@ export function cachedJson(key, url) {
   if (store.size > MAX_ENTRIES) store.delete(store.keys().next().value);
   return promise;
 }
+
+export async function fetchJson(url) {
+  const res = await fetch(url, { cache: "no-store" });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error ?? "İstek başarısız");
+  return data;
+}
+
+export const cachedJson = (key, url) => cached(key, () => fetchJson(url));
 
 // Iterate entries whose key starts with a prefix (e.g. same search, different radii)
 export function* cachedEntries(prefix) {

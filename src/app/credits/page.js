@@ -1,4 +1,5 @@
 import credits from "@/lib/data/photoCredits.json";
+import { withBase } from "@/lib/basePath";
 import styles from "./page.module.css";
 
 export const metadata = { title: "Künye — Mise" };
@@ -21,6 +22,7 @@ export default function CreditsPage() {
         <li><strong>Harita</strong> OpenFreeMap · OpenMapTiles · © OpenStreetMap katkıcıları</li>
         <li><strong>Yürüme rotası</strong> OSRM · routing.openstreetmap.de</li>
         <li><strong>Hava durumu</strong> Open-Meteo.com (CC BY 4.0)</li>
+        <li><strong>Yükseklik (demo)</strong> Open-Meteo · Copernicus DEM GLO-90 © DLR e.V. 2010–2014 ve © Airbus Defence and Space GmbH 2014–2018, Avrupa Birliği ve ESA tarafından COPERNICUS kapsamında sağlanmıştır</li>
         <li><strong>Konum arama</strong> Photon · komoot</li>
         <li><strong>Yoğunluk</strong> Mise tahmin modeli (gerçek ölçüm değildir)</li>
       </ul>
@@ -31,7 +33,7 @@ export default function CreditsPage() {
       <ul className={styles.grid}>
         {credits.map((c) => (
           <li key={c.file}>
-            <img src={c.file} alt={c.title} loading="lazy" />
+            <img src={withBase(c.file)} alt={c.title} loading="lazy" />
             <div>
               <p className={styles.author}>{c.author || "Bilinmiyor"}</p>
               <p className="mono">

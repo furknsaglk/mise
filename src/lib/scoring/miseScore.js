@@ -1,4 +1,4 @@
-// MISE PUANI
+// MISE SCORE
 // Combines the ratings of different platforms into one reliable score (0–10).
 //
 // 1) Each platform's rating is converted to a 5-point scale (Foursquare rates out of 10).
@@ -11,6 +11,9 @@ export const SOURCES = {
   google: { label: "Google", short: "G", scale: 5, prior: 40, weight: 1 },
   foursquare: { label: "Foursquare", short: "FSQ", scale: 10, prior: 15, weight: 0.8 },
   tripadvisor: { label: "Tripadvisor", short: "TA", scale: 5, prior: 25, weight: 0.9 },
+  // Fictional sources used only by the static demo (src/lib/demo/venues.js)
+  demoA: { label: "Demo A", short: "DA", scale: 5, prior: 40, weight: 1 },
+  demoB: { label: "Demo B", short: "DB", scale: 10, prior: 15, weight: 0.8 },
 };
 
 const PRIOR_MEAN = 4.1; // "default" rating of a good venue in Europe

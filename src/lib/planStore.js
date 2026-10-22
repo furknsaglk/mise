@@ -1,6 +1,6 @@
 import { getCourse } from "@/lib/courses";
 
-// PLAN DEPOSU
+// PLAN STORE
 // The selected place and the day's courses are stored in the browser (localStorage);
 // the plan survives page reloads. Discover and the planner share the same store.
 

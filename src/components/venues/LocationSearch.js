@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Icon from "@/components/ui/Icon";
+import { searchPlaces } from "@/lib/dataClient";
 import styles from "./LocationSearch.module.css";
 
 // Searches any country, city, neighborhood, street or venue worldwide.
@@ -23,10 +24,9 @@ export default function LocationSearch({ onSelect, onLocate, locating }) {
     const controller = new AbortController();
     const timer = setTimeout(() => {
       setLoading(true);
-      fetch(`/api/geocode?q=${encodeURIComponent(q)}`, { signal: controller.signal })
-        .then((res) => res.json())
-        .then((data) => {
-          setPlaces(data.places ?? []);
+      searchPlaces(q, controller.signal)
+        .then((results) => {
+          setPlaces(results);
           setActive(0);
           setOpen(true);
         })

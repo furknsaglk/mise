@@ -63,9 +63,13 @@ export default function VenuePopup({ venue, numeral, time }) {
       {googleCardId && <GooglePlaceCard placeId={googleCardId} variant="compact" />}
 
       <div className={styles.footer}>
-        <a href={venue.mapsUrl ?? googleMapsPlace(venue)} target="_blank" rel="noreferrer">
-          {venue.reviews?.length ? "Tüm yorumlar Google'da" : "Google Haritalar'da aç"} →
-        </a>
+        {venue.origin === "demo" ? (
+          <span>Kurgusal demo mekanı</span>
+        ) : (
+          <a href={venue.mapsUrl ?? googleMapsPlace(venue)} target="_blank" rel="noreferrer">
+            {venue.reviews?.length ? "Tüm yorumlar Google'da" : "Google Haritalar'da aç"} →
+          </a>
+        )}
         {venue.origin === "google" && <span>Veri: Google Maps</span>}
         {venue.origin === "foursquare" && <span>Veri: Foursquare</span>}
       </div>

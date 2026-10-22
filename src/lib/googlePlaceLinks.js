@@ -30,7 +30,7 @@ export function rememberPlaceLinks(links = []) {
   let changed = false;
   for (const { venue, place } of links) {
     if (venue && isPlaceId(place) && map[venue] !== place) {
-      delete map[venue]; // yeniden eklenince "en yeni" olsun
+      delete map[venue]; // re-insert so it counts as the newest entry
       map[venue] = place;
       changed = true;
     }

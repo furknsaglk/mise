@@ -2,6 +2,7 @@ import { Instrument_Serif, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "@/styles/tokens.css";
 import "./globals.css";
 import AppShell from "@/components/ui/AppShell";
+import { withBase } from "@/lib/basePath";
 
 const display = Instrument_Serif({
   subsets: ["latin", "latin-ext"],
@@ -24,8 +25,8 @@ export const metadata = {
   title: "Mise — Günün, yerli yerinde",
   description:
     "Avrupa'nın en iyi puanlı mekanlarını keşfet, gününü bir tadım menüsü gibi planla.",
-  icons: { icon: "/icon.svg" },
-  manifest: "/manifest.webmanifest",
+  icons: { icon: withBase("/icon.svg") },
+  manifest: withBase("/manifest.webmanifest"),
 };
 
 export const viewport = {

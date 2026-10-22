@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { loadWalkingRoute } from "@/lib/dataClient";
 
 // Fetches the real walking route between stops.
 // Returns null if the service is unreachable; the app falls back to straight-line estimates.
@@ -13,8 +14,7 @@ export default function useWalkingRoute(points) {
     if (points.length < 2) return;
     const controller = new AbortController();
     const timer = setTimeout(() => {
-      fetch(`/api/route?points=${key}`, { signal: controller.signal })
-        .then((res) => (res.ok ? res.json() : null))
+      loadWalkingRoute(points, controller.signal)
         .then((data) => data?.line && setRoute({ ...data, key }))
         .catch(() => {});
     }, 250);

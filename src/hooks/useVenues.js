@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { cachedJson, cachedEntries } from "@/lib/clientCache";
+import { cached, cachedEntries } from "@/lib/clientCache";
+import { loadVenues } from "@/lib/dataClient";
 import { rememberPlaceLinks } from "@/lib/googlePlaceLinks";
 
 const DEBOUNCE_MS = 350;
 
-// Fetches venues from /api/places for the selected center and radius.
+// Fetches venues for the selected center and radius (via /api/places, or fictional demo venues
+// in the static demo build — see src/lib/dataClient.js).
 //
 // Cost safeguards (each Google search costs 3 paid requests):
 //  • Same search moment (refreshKey) + same place → no repeated request when switching tabs.
@@ -53,8 +55,7 @@ export default function useVenues(center, radiusKm, refreshKey) {
     }
 
     const timer = setTimeout(() => {
-      const params = new URLSearchParams({ lat: center.lat, lng: center.lng, radius: radiusKm });
-      cachedJson(`${prefix}${radiusKm}`, `/api/places?${params}`)
+      cached(`${prefix}${radiusKm}`, () => loadVenues({ lat: center.lat, lng: center.lng, radiusKm }))
         .then((data) => apply(data, radiusKm))
         .catch(fail);
     }, DEBOUNCE_MS);

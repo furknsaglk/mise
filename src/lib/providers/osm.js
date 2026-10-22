@@ -7,7 +7,7 @@ import { safeUrl } from "@/lib/url";
 // Note: OSM has no ratings. Ratings come from Google/Foursquare when their keys are set;
 // in OSM-only mode venues are ranked by a "prominence" signal.
 //
-// 1. tercih: Overpass (zengin veri: saatler, mutfak, web sitesi)
+// 1st choice: Overpass (rich data: hours, cuisine, website)
 // 2nd choice: Photon (when Overpass is busy; less detail but very fast)
 
 const USER_AGENT = "Mise/0.1 (gastronomy route planner prototype)";

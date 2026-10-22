@@ -1,7 +1,7 @@
 import Icon from "./Icon";
 import styles from "./Badge.module.css";
 
-// tone: "verified" (zeytin) | "weather" (safran) | "rain" (mavi) | "alert" (pomodoro) | "neutral"
+// tone: "verified" (olive) | "weather" (saffron) | "rain" (blue) | "alert" (pomodoro) | "neutral"
 export default function Badge({ tone = "neutral", icon, children }) {
   return (
     <span className={`${styles.badge} ${styles[tone]}`}>

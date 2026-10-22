@@ -1,0 +1,73 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--line-strong);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.stars {
+  letter-spacing: 1px;
+  color: var(--saffron);
+  line-height: 1;
+}
+
+.empty {
+  color: var(--line-strong);
+}
+
+.when {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-3);
+}
+
+.text {
+  font-family: var(--font-display);
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.author {
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+.author a {
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.translated {
+  font-style: italic;
+}
+
+/* In the map card: shorter, at most 3 lines */
+.list[data-compact] {
+  gap: var(--space-2);
+}
+
+.list[data-compact] .text {
+  font-size: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

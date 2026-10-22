@@ -1,0 +1,23 @@
+.notice {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-m);
+  border: 1px solid color-mix(in srgb, var(--saffron) 45%, transparent);
+  background: var(--saffron-soft);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.notice svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: color-mix(in srgb, var(--saffron) 70%, var(--ink));
+}
+
+.notice strong {
+  color: var(--ink);
+  font-weight: 600;
+}

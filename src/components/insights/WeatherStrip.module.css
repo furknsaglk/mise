@@ -1,0 +1,123 @@
+.skeleton {
+  height: 64px;
+  border-radius: var(--radius-m);
+  background: var(--paper-2);
+}
+
+.unavailable {
+  padding: var(--space-3) var(--space-4);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-m);
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+/* Current weather (Discover) */
+.now {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-m);
+  background: var(--saffron-soft);
+}
+
+.now > svg {
+  flex-shrink: 0;
+  color: color-mix(in srgb, var(--saffron) 70%, var(--ink));
+}
+
+.now strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.place {
+  color: var(--ink-3);
+}
+
+.tip {
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.sunset {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+/* Day forecast (planner) */
+.day {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+}
+
+.hours {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hours li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
+  border-radius: var(--radius-s);
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+.hours li svg {
+  color: color-mix(in srgb, var(--saffron) 70%, var(--ink));
+}
+
+.hours li[data-wet] {
+  background: color-mix(in srgb, var(--rain) 14%, transparent);
+}
+
+.hours li[data-wet] svg {
+  color: var(--rain);
+}
+
+.hours strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.hours small {
+  font-size: 10px;
+  color: var(--rain);
+}
+
+.sun {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+.sun span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}

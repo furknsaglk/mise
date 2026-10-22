@@ -1,0 +1,112 @@
+.planner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.head {
+  display: grid;
+  gap: var(--space-4);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--ink);
+}
+
+.title {
+  font-size: clamp(48px, 8vw, 88px);
+  letter-spacing: -0.03em;
+  margin-top: var(--space-2);
+}
+
+.title em {
+  color: var(--pomodoro);
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.lede {
+  max-width: 54ch;
+  color: var(--ink-2);
+}
+
+/* Phone: courses → map → ticket */
+.grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-areas:
+    "builder"
+    "map"
+    "ticket";
+}
+
+.builder {
+  grid-area: builder;
+}
+
+.ticket {
+  grid-area: ticket;
+  min-width: 0;
+}
+
+.weather {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--space-3);
+}
+
+.fresh {
+  font-size: 11px;
+  color: var(--olive);
+}
+
+.map {
+  grid-area: map;
+  height: 42vh;
+  min-height: 280px;
+}
+
+.mapSkeleton {
+  height: 100%;
+  border-radius: var(--radius-l);
+  background: var(--paper-2);
+}
+
+/* Tablet / small desktop: courses + ticket on the left, map on the right */
+@media (min-width: 900px) {
+  .head {
+    grid-template-columns: 1fr minmax(360px, 520px);
+    align-items: end;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "builder map"
+      "ticket map";
+    align-items: start;
+  }
+
+  .map {
+    position: sticky;
+    top: 88px;
+    /* Fully visible even when scrolled to the top (below the header) */
+    height: max(460px, calc(100dvh - 300px));
+  }
+}
+
+/* Wide screen: courses | ticket | map */
+@media (min-width: 1240px) {
+  .grid {
+    grid-template-columns: 340px minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-areas: "builder ticket map";
+  }
+
+  .builder {
+    position: sticky;
+    top: 88px;
+  }
+}

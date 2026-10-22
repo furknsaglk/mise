@@ -1,0 +1,7 @@
+# Files that are never uploaded to Vercel. Secret keys are not deployed as files;
+# they are read from Vercel's encrypted Environment Variables.
+.env
+.env.*
+!.env.example
+node_modules
+.next

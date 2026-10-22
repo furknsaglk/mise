@@ -1,0 +1,35 @@
+{
+  "name": "mise",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mise — a gastronomy route planner for Europe that builds your day like a tasting menu.",
+  "author": "furknsaglk",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/furknsaglk/mise.git"
+  },
+  "homepage": "https://github.com/furknsaglk/mise#readme",
+  "bugs": {
+    "url": "https://github.com/furknsaglk/mise/issues"
+  },
+  "keywords": ["nextjs", "react", "gastronomy", "route-planner", "leaflet", "maplibre", "openstreetmap"],
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@maplibre/maplibre-gl-leaflet": "^0.1.4",
+    "leaflet": "^1.9.4",
+    "maplibre-gl": "^5.24.0",
+    "next": "^16.4.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-leaflet": "^5.0.0",
+    "tz-lookup": "^6.1.25"
+  }
+}

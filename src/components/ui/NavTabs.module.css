@@ -1,0 +1,60 @@
+.top,
+.bottom {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-2);
+  transition: background 0.2s var(--ease-out), color 0.2s var(--ease-out);
+}
+
+.tab:hover {
+  color: var(--ink);
+  background: var(--paper-2);
+}
+
+.tab[data-active] {
+  color: var(--paper);
+  background: var(--ink);
+}
+
+/* Desktop: visible in the header, hidden on phones */
+.top {
+  display: none;
+}
+
+/* Phone: floating menu at the bottom */
+.bottom {
+  position: fixed;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + var(--space-4));
+  transform: translateX(-50%);
+  z-index: 60;
+  padding: 6px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-float);
+}
+
+.bottom .tab {
+  padding: 10px 18px;
+}
+
+@media (min-width: 768px) {
+  .top {
+    display: flex;
+  }
+
+  .bottom {
+    display: none;
+  }
+}

@@ -1,0 +1,86 @@
+/* ==========================================================
+   Mise — Design system (colors, fonts, sizes)
+   The whole look of the app is driven by these variables.
+   ========================================================== */
+
+:root {
+  /* Zemin & metin */
+  --paper: #f4efe6;        /* Krem kağıt */
+  --paper-2: #ebe4d7;
+  --surface: #fbf8f2;      /* Kart yüzeyi */
+  --ink: #1e1a17;          /* Espresso */
+  --ink-2: #5a524b;
+  --ink-3: #8c837a;
+  --line: rgba(30, 26, 23, 0.12);
+  --line-strong: rgba(30, 26, 23, 0.28);
+
+  /* Vurgular */
+  --pomodoro: #d9472b;
+  --pomodoro-soft: rgba(217, 71, 43, 0.12);
+  --on-pomodoro: #fff8f0;
+  --olive: #6b7a3a;
+  --olive-soft: rgba(107, 122, 58, 0.14);
+  --saffron: #e8a33d;
+  --saffron-soft: rgba(232, 163, 61, 0.18);
+  --plum: #7a3b57;
+  --rain: #5a7f99; /* yağmur / hava uyarıları */
+
+  /* Course (meal) colors */
+  --c-breakfast: var(--saffron);
+  --c-coffee: #8a5a3b;
+  --c-tasting: var(--olive);
+  --c-dinner: var(--pomodoro);
+  --c-drinks: var(--plum);
+
+  /* Fonts (loaded in layout.js) */
+  --font-display: var(--font-instrument), "Iowan Old Style", Georgia, serif;
+  --font-sans: var(--font-dmsans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  /* Sizes */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+
+  --radius-s: 6px;
+  --radius-m: 14px;
+  --radius-l: 22px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 1px 0 rgba(30, 26, 23, 0.05), 0 18px 32px -20px rgba(30, 26, 23, 0.35);
+  --shadow-float: 0 10px 30px -10px rgba(30, 26, 23, 0.35);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --content-width: 1320px;
+  --nav-height: 64px;
+}
+
+/* Dark mode: "late dinner" */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #14110f;
+    --paper-2: #1c1815;
+    --surface: #1f1b18;
+    --ink: #f1eae0;
+    --ink-2: #b9aea2;
+    --ink-3: #857a70;
+    --line: rgba(241, 234, 224, 0.1);
+    --line-strong: rgba(241, 234, 224, 0.26);
+
+    --pomodoro: #e8573a;
+    --pomodoro-soft: rgba(232, 87, 58, 0.16);
+    --olive: #9aa85e;
+    --olive-soft: rgba(154, 168, 94, 0.16);
+    --saffron: #ebb050;
+    --plum: #b0668a;
+    --rain: #8fb3cc;
+    --c-coffee: #c08a62;
+
+    --shadow-card: 0 1px 0 rgba(0, 0, 0, 0.4), 0 18px 32px -20px rgba(0, 0, 0, 0.8);
+  }
+}

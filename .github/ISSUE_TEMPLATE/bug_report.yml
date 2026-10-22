@@ -1,0 +1,62 @@
+name: Bug report
+description: Something isn't working as expected.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! ⚠️ **Do not paste API keys, `.env.local` contents or screenshots that show keys.**
+        Security problems should be reported privately — see [SECURITY.md](https://github.com/furknsaglk/mise/blob/main/SECURITY.md).
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the Day Menu page
+        2. Search for "Kadıköy, İstanbul"
+        3. Pin a venue for two consecutive courses
+    validations:
+      required: true
+  - type: dropdown
+    id: page
+    attributes:
+      label: Page
+      options:
+        - Discover (/)
+        - Day Menu (/plan)
+        - Credits (/credits)
+        - Other
+    validations:
+      required: true
+  - type: checkboxes
+    id: keys
+    attributes:
+      label: Which data sources are configured? (names only, never values)
+      options:
+        - label: GOOGLE_PLACES_API_KEY
+        - label: FOURSQUARE_API_KEY
+        - label: NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and device
+      placeholder: e.g. Safari 18 on iPhone 15, Chrome 130 on Windows 11
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console output or screenshots
+      description: Optional. Remove any keys before pasting.
+      render: shell

@@ -1,0 +1,128 @@
+.explorer {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--ink);
+  color: var(--ink-2);
+}
+
+.title {
+  font-size: clamp(44px, 8vw, 72px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.title em {
+  color: var(--pomodoro);
+}
+
+.note {
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+.resultsHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.resultsHead strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 26px;
+  margin-right: 4px;
+}
+
+.resultsHead :global(.mono) {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.fresh {
+  margin-top: calc(-1 * var(--space-3));
+  font-size: 11px;
+  color: var(--olive);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.skeleton {
+  height: 118px;
+  border-radius: var(--radius-m);
+  background: linear-gradient(100deg, var(--paper-2) 30%, var(--surface) 50%, var(--paper-2) 70%);
+  background-size: 300% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+.empty {
+  padding: var(--space-6) var(--space-4);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-m);
+  text-align: center;
+  color: var(--ink-2);
+}
+
+.empty h3 {
+  font-size: 28px;
+  margin-bottom: var(--space-2);
+  color: var(--ink);
+}
+
+/* Phone: map on top, list below */
+.mapCol {
+  order: -1;
+  height: 46vh;
+  min-height: 300px;
+}
+
+.mapSkeleton {
+  height: 100%;
+  border-radius: var(--radius-l);
+  background: linear-gradient(100deg, var(--paper-2) 30%, var(--surface) 50%, var(--paper-2) 70%);
+  background-size: 300% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+/* Desktop: list on the left, sticky map on the right */
+@media (min-width: 960px) {
+  .explorer {
+    grid-template-columns: minmax(400px, 480px) 1fr;
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  .mapCol {
+    order: 0;
+    position: sticky;
+    top: 88px;
+    height: calc(100dvh - 120px);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -300% 0;
+  }
+}

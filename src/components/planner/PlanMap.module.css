@@ -1,0 +1,64 @@
+.wrap {
+  position: relative;
+  height: 100%;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+  isolation: isolate;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+  background: var(--paper-2);
+  font-family: var(--font-sans);
+}
+
+.map :global(.leaflet-control-attribution) {
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  color: var(--ink-3);
+  font-size: 10px;
+}
+
+.map :global(.leaflet-control-attribution a) {
+  color: var(--ink-2);
+}
+
+/* Stop: course-colored badge with a Roman numeral */
+.stop {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff8f0;
+  border: 3px solid var(--surface);
+  box-shadow: 0 6px 16px -6px rgba(30, 26, 23, 0.6);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.2s var(--ease-out);
+}
+
+.stop[data-active] {
+  transform: scale(1.25);
+  border-color: var(--ink);
+}
+
+/* Starting point */
+.start {
+  position: relative;
+  width: 22px;
+  height: 22px;
+}
+
+.start span {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 3px solid var(--surface);
+}

@@ -1,0 +1,299 @@
+.ticket {
+  width: 100%;
+}
+
+.loading {
+  padding: var(--space-5) 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink-3);
+}
+
+.warnings {
+  margin: var(--space-2) 0 var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  list-style: none;
+  border-radius: var(--radius-s);
+  background: var(--pomodoro-soft);
+  color: var(--pomodoro);
+  font-size: 13px;
+}
+
+.warnings li + li {
+  margin-top: 4px;
+}
+
+.stops {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stop {
+  position: relative;
+  animation: stopIn 0.4s var(--ease-out) both;
+}
+
+.stop:nth-child(2) { animation-delay: 0.05s; }
+.stop:nth-child(3) { animation-delay: 0.1s; }
+.stop:nth-child(4) { animation-delay: 0.15s; }
+.stop:nth-child(5) { animation-delay: 0.2s; }
+.stop:nth-child(6) { animation-delay: 0.25s; }
+
+.row {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0 var(--space-2);
+}
+
+.numeral {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--accent);
+  transition: transform 0.25s var(--ease-out);
+}
+
+.stop[data-active] .numeral {
+  transform: scale(1.15);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.course {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.venue {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1.1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meta {
+  font-size: 13px;
+  color: var(--ink-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.missing {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink-3);
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.time {
+  font-size: 14px;
+  padding: 3px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-s);
+}
+
+.score {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.score[data-unrated] {
+  color: var(--ink-3);
+}
+
+.insights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: 0 0 var(--space-2) 60px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.weather,
+.sunset,
+.reason,
+.busy {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.weather {
+  background: var(--paper-2);
+  color: var(--ink-2);
+}
+
+.weather[data-wet] {
+  background: color-mix(in srgb, var(--rain) 16%, transparent);
+  color: var(--rain);
+}
+
+.sunset {
+  background: var(--saffron-soft);
+  color: color-mix(in srgb, var(--saffron) 65%, var(--ink));
+}
+
+.reason {
+  background: var(--olive-soft);
+  color: var(--olive);
+  font-weight: 500;
+}
+
+.busy {
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--ink-2);
+}
+
+.busy[data-level="calm"] {
+  color: var(--olive);
+}
+
+.busy[data-level="busy"],
+.busy[data-level="packed"] {
+  color: var(--pomodoro);
+  border-color: color-mix(in srgb, var(--pomodoro) 40%, transparent);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0 0 var(--space-3) 60px;
+}
+
+.actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  font-size: 12px;
+  color: var(--ink-2);
+}
+
+.actions button:hover {
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+.alts {
+  margin: 0 0 var(--space-3) 60px;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  overflow: hidden;
+}
+
+.alts li + li {
+  border-top: 1px solid var(--line);
+}
+
+.alts button {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+.alts button:hover {
+  background: var(--paper-2);
+}
+
+.altName {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--ink);
+}
+
+/* Dashed walking connector between stops */
+.leg {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px var(--space-2);
+  margin-left: 22px;
+  padding: 8px 0 8px 30px;
+  border-left: 1px dashed var(--line-strong);
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.leg[data-late] {
+  border-left-color: var(--pomodoro);
+}
+
+.free {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.summary strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 26px;
+  color: var(--ink);
+}
+
+@keyframes stopIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}

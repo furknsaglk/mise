@@ -1,0 +1,55 @@
+.wrap {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.now {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.now[data-level="calm"] { color: var(--olive); }
+.now[data-level="medium"] { color: color-mix(in srgb, var(--saffron) 70%, var(--ink)); }
+.now[data-level="busy"],
+.now[data-level="packed"] { color: var(--pomodoro); }
+
+.bars {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  align-items: end;
+  gap: 2px;
+  height: 44px;
+}
+
+.bar {
+  height: var(--h);
+  border-radius: 2px 2px 0 0;
+  background: color-mix(in srgb, var(--ink) 18%, transparent);
+  transition: height 0.4s var(--ease-out);
+}
+
+.bar[data-active] {
+  background: var(--pomodoro);
+}
+
+.bar[data-closed] {
+  background: transparent;
+  border-bottom: 1px dashed var(--line-strong);
+}
+
+/* Axis: positions of 12 and 18 within the 07–24 range */
+.axis {
+  display: grid;
+  grid-template-columns: 5fr 6fr 6fr auto;
+  font-size: 10px;
+  color: var(--ink-3);
+}
